@@ -4,6 +4,7 @@
 /app/config/parameters.yml
 /app/logs/*
 /app/Resources/data/*
+/app/Resources/.DS_store
 !app/cache/.gitkeep
 !app/logs/.gitkeep
 /app/phpunit.xml

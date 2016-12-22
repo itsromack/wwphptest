@@ -28,12 +28,29 @@ class CreateWWDataCommand extends ContainerAwareCommand
             '=========================',
             ''
         ]);
-        
-        $output->writeln('loading data...');
         $manager = $this->getContainer()->get('app.wwdata');
 
         $filereader = $this->getContainer()->get('file.reader');
         $filename = 'app/Resources/data/007034-99999-2012.op';
-        $filereader->getFileContents($filename);
+        $contents = $filereader->getFileContents($filename);
+
+        if (!empty($contents))
+        {
+            $wwdataManager = $this->getContainer()->get('wwdata.loader');
+            foreach ($contents as $content)
+            {
+                $wwdata = $wwdataManager->prepare($content);
+                $this->saveData($wwdata);
+            }
+        }
+    }
+
+    private function saveData($data)
+    {
+        echo "saving data...\n";
+        $doctrine = $this->getContainer()->get('doctrine');
+        $manager = $doctrine->getManager();
+        $manager->persist($data);
+        $manager->flush();
     }
 }

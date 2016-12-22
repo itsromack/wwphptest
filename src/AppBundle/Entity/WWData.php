@@ -24,7 +24,7 @@ class WWData
     /**
      * @var string
      *
-     * @ORM\Column(name="stn", type="string", length=20)
+     * @ORM\Column(name="stn", type="string", length=20, nullable=true)
      */
     private $stn;
 
@@ -36,9 +36,9 @@ class WWData
     private $wban;
 
     /**
-     * @var \DateTime
+     * @var string
      *
-     * @ORM\Column(name="yearmoda", type="date", nullable=true)
+     * @ORM\Column(name="yearmoda", type="string", length=20, nullable=true)
      */
     private $yearmoda;
 
@@ -217,7 +217,7 @@ class WWData
      */
     public function setWban($wban)
     {
-        $this->wban = $wban;
+        $this->wban = (int) $wban;
 
         return $this;
     }
@@ -235,7 +235,7 @@ class WWData
     /**
      * Set yearmoda
      *
-     * @param \DateTime $yearmoda
+     * @param string $yearmoda
      * @return WWData
      */
     public function setYearmoda($yearmoda)
@@ -248,7 +248,7 @@ class WWData
     /**
      * Get yearmoda
      *
-     * @return \DateTime 
+     * @return string 
      */
     public function getYearmoda()
     {
@@ -263,7 +263,7 @@ class WWData
      */
     public function setTemp($temp)
     {
-        $this->temp = $temp;
+        $this->temp = (float) $temp;
 
         return $this;
     }
@@ -286,7 +286,7 @@ class WWData
      */
     public function setTempN($tempN)
     {
-        $this->tempN = $tempN;
+        $this->tempN = (int) $tempN;
 
         return $this;
     }
@@ -309,7 +309,7 @@ class WWData
      */
     public function setDewp($dewp)
     {
-        $this->dewp = $dewp;
+        $this->dewp = (float) $dewp;
 
         return $this;
     }
@@ -332,7 +332,7 @@ class WWData
      */
     public function setDewpN($dewpN)
     {
-        $this->dewpN = $dewpN;
+        $this->dewpN = (int) $dewpN;
 
         return $this;
     }
@@ -355,7 +355,7 @@ class WWData
      */
     public function setSlp($slp)
     {
-        $this->slp = $slp;
+        $this->slp = (float) $slp;
 
         return $this;
     }
@@ -378,7 +378,7 @@ class WWData
      */
     public function setSlpN($slpN)
     {
-        $this->slpN = $slpN;
+        $this->slpN = (int) $slpN;
 
         return $this;
     }
@@ -401,7 +401,7 @@ class WWData
      */
     public function setStp($stp)
     {
-        $this->stp = $stp;
+        $this->stp = (float) $stp;
 
         return $this;
     }
@@ -424,7 +424,7 @@ class WWData
      */
     public function setStpN($stpN)
     {
-        $this->stpN = $stpN;
+        $this->stpN = (int) $stpN;
 
         return $this;
     }
@@ -447,7 +447,7 @@ class WWData
      */
     public function setVisib($visib)
     {
-        $this->visib = $visib;
+        $this->visib = (float) $visib;
 
         return $this;
     }
@@ -470,7 +470,7 @@ class WWData
      */
     public function setVisibN($visibN)
     {
-        $this->visibN = $visibN;
+        $this->visibN = (int) $visibN;
 
         return $this;
     }
@@ -493,7 +493,7 @@ class WWData
      */
     public function setWdsp($wdsp)
     {
-        $this->wdsp = $wdsp;
+        $this->wdsp = (float) $wdsp;
 
         return $this;
     }
@@ -516,7 +516,7 @@ class WWData
      */
     public function setWdspN($wdspN)
     {
-        $this->wdspN = $wdspN;
+        $this->wdspN = (int) $wdspN;
 
         return $this;
     }
@@ -539,7 +539,7 @@ class WWData
      */
     public function setMxspd($mxspd)
     {
-        $this->mxspd = $mxspd;
+        $this->mxspd = (float) $mxspd;
 
         return $this;
     }
@@ -562,7 +562,7 @@ class WWData
      */
     public function setGust($gust)
     {
-        $this->gust = $gust;
+        $this->gust = (float) $gust;
 
         return $this;
     }
@@ -585,7 +585,7 @@ class WWData
      */
     public function setMaxRecord($maxRecord)
     {
-        $this->maxRecord = $maxRecord;
+        $this->maxRecord = (float) $maxRecord;
 
         return $this;
     }
@@ -608,7 +608,7 @@ class WWData
      */
     public function setMinRecord($minRecord)
     {
-        $this->minRecord = $minRecord;
+        $this->minRecord = (float) $minRecord;
 
         return $this;
     }
@@ -631,7 +631,7 @@ class WWData
      */
     public function setPrcp($prcp)
     {
-        $this->prcp = $prcp;
+        $this->prcp = (float) $prcp;
 
         return $this;
     }
@@ -654,7 +654,7 @@ class WWData
      */
     public function setSndp($sndp)
     {
-        $this->sndp = $sndp;
+        $this->sndp = (float) $sndp;
 
         return $this;
     }
@@ -677,7 +677,7 @@ class WWData
      */
     public function setFrshtt($frshtt)
     {
-        $this->frshtt = $frshtt;
+        $this->frshtt = (int) $frshtt;
 
         return $this;
     }

@@ -12,3 +12,6 @@ services:
 
     file.reader:
         class:  AppBundle\Helper\FileReader
+
+    wwdata.loader:
+        class:  AppBundle\Helper\WWDataLoader
