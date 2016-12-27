@@ -10,6 +10,9 @@ services:
     app.wwdata:
         class:  AppBundle\Entity\WWData
 
+    factory.processor:
+        class:  AppBundle\Processors\ProcessorFactory
+
     file.utility:
         class:  AppBundle\Helper\FileUtility
 

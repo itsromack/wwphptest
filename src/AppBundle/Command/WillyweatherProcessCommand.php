@@ -38,7 +38,8 @@ class WillyweatherProcessCommand extends ContainerAwareCommand
             $repository = $doctrine->getRepository('AppBundle:WWData');
             $items = $repository->findAll();
 
-            $processor = ProcessorFactory::create($field);
+            $factory = $this->getContainer()->get('factory.processor');
+            $processor = $factory->create($field);
 
             if (!is_null($processor))
             {

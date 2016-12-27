@@ -23,23 +23,23 @@ use \ReflectionClass;
 
 class ProcessorFactory
 {
-    public static function create($field)
+    public function create($field)
     {
         if (empty($field))
         {
             return null;
         }
 
-        if (!static::is_valid_field($field))
+        if (!$this->is_valid_field($field))
         {
             return null;
         }
 
-        $instance = static::getInstance($field);
+        $instance = $this->getInstance($field);
         return $instance;
     }
 
-    public static function is_valid_field($field)
+    public function is_valid_field($field)
     {
         $field = strtoupper($field);
 
@@ -65,7 +65,7 @@ class ProcessorFactory
         return false;
     }
 
-    public static function getInstance($field)
+    public function getInstance($field)
     {
         $field = strtoupper($field);
         if ($field == 'DEWP') return new DewpProcessor;
