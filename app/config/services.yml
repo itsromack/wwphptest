@@ -10,8 +10,8 @@ services:
     app.wwdata:
         class:  AppBundle\Entity\WWData
 
-    file.reader:
-        class:  AppBundle\Helper\FileReader
+    file.utility:
+        class:  AppBundle\Helper\FileUtility
 
     wwdata.loader:
         class:  AppBundle\Helper\WWDataLoader

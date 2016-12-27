@@ -3,11 +3,11 @@
 namespace AppBundle\Helper;
 
 /**
- * Description of FileReader
+ * Description of FileUtility
  *
  * @author romack
  */
-class FileReader
+class FileUtility
 {
     public function getFileContents($filename)
     {
@@ -17,7 +17,7 @@ class FileReader
         while(($buffer = fgets($handle, 4096)) !== false)
         {
             if ($index++ == 0) continue; // skip the Header line
-            $sanitizedData = static::sanitizeData($buffer);
+            $sanitizedData = $this->sanitizeData($buffer);
             $contents[] = $sanitizedData;
         }
         if (!feof($handle))
@@ -28,7 +28,7 @@ class FileReader
         return $contents;
     }
     
-    public static function sanitizeData($data)
+    public function sanitizeData($data)
     {
         $arrayData = explode(' ', $data);
         $content = [];
@@ -52,5 +52,10 @@ class FileReader
         }
         echo "\n";
         return $content;
+    }
+
+    public function decompressFile($file)
+    {
+        //
     }
 }

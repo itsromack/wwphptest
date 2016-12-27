@@ -30,9 +30,11 @@ class CreateWWDataCommand extends ContainerAwareCommand
         ]);
         $manager = $this->getContainer()->get('app.wwdata');
 
-        $filereader = $this->getContainer()->get('file.reader');
+        $fileutility = $this->getContainer()->get('file.utility');
         $filename = 'app/Resources/data/007034-99999-2012.op';
-        $contents = $filereader->getFileContents($filename);
+        $extracted = $fileutility->decompressFile($filename);
+        exit;
+        $contents = $fileutility->getFileContents($extracted);
 
         if (!empty($contents))
         {
