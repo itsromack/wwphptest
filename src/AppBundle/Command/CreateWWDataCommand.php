@@ -31,11 +31,15 @@ class CreateWWDataCommand extends ContainerAwareCommand
         $manager = $this->getContainer()->get('app.wwdata');
 
         $fileutility = $this->getContainer()->get('file.utility');
-        $filename = 'app/Resources/data/007034-99999-2012.op';
+        $filename = 'app/Resources/data/007034-99999-2012.op.gz';
+
+        // Decompress the GZ file
         $extracted = $fileutility->decompressFile($filename);
-        exit;
+
+        // Retrieve File content
         $contents = $fileutility->getFileContents($extracted);
 
+        // Load the content to DB
         if (!empty($contents))
         {
             $wwdataManager = $this->getContainer()->get('wwdata.loader');

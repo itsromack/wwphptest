@@ -54,8 +54,26 @@ class FileUtility
         return $content;
     }
 
-    public function decompressFile($file)
+    public function decompressFile($compressed_file)
     {
-        //
+        $buffer_size = 4096; // read 4kb at a time
+        $decompressed_file_name = str_replace('.gz', '', $compressed_file); 
+
+        // Open our files (in binary mode)
+        $file_handle = gzopen($compressed_file, 'rb');
+        $extracted = fopen($decompressed_file_name, 'wb'); 
+
+        // Keep repeating until the end of the input file
+        while (!gzeof($file_handle)) {
+            // Read buffer-size bytes
+            // Both fwrite and gzread and binary-safe
+            fwrite($extracted, gzread($file_handle, $buffer_size));
+        }
+
+        // Files are done, close files
+        fclose($extracted);
+
+        gzclose($file_handle);
+        return $decompressed_file_name;
     }
 }
